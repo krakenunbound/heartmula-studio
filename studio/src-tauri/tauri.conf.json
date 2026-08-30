@@ -1,0 +1,32 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "HeartMuLa Studio",
+  "version": "0.3.1",
+  "identifier": "com.thekraken.heartmula",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1424",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [{
+      "title": "HeartMuLa Studio",
+      "width": 1540,
+      "height": 960,
+      "minWidth": 1180,
+      "minHeight": 720,
+      "decorations": true,
+      "resizable": true,
+      "dragDropEnabled": true,
+      "backgroundColor": "#06121C"
+    }],
+    "security": { "csp": null }
+  },
+  "bundle": {
+    "active": false,
+    "targets": ["nsis"],
+    "icon": ["icons/icon.ico"]
+  }
+}
+
