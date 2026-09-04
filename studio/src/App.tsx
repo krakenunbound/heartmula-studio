@@ -1187,7 +1187,7 @@ export default function App() {
 
   function reuseSong(song: Song) {
     setTitle(song.title); setArtist(song.artist || ""); setAlbum(song.album || ""); setGenre(song.genre || ""); setDescription(song.description); setLyrics(song.lyrics || ""); setEnglishTranslation(song.english_translation || ""); setLyricsLanguage(song.lyrics_language || "en"); setInstrumental(song.instrumental);
-    setLockedSeed(String(song.seed));
+    setLockedSeed("");
     setAutoDuration(Boolean(song.auto_duration));
     setDuration(Math.max(10, Math.min(300, Math.round(song.requested_duration ?? song.duration ?? 120))));
     setSteps(song.steps ?? 30);

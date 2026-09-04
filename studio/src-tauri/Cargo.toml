@@ -1,6 +1,6 @@
 [package]
 name = "heartmula-studio"
-version = "0.3.1"
+version = "0.3.2"
 description = "A native HeartMuLa music production studio"
 authors = ["The Kraken"]
 edition = "2021"

@@ -40,6 +40,19 @@ log = logging.getLogger("heartmula.studio")
 app = FastAPI(title="HeartMuLa Studio", version="0.4.0")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
+# Give HeartMuLa a complete instrumental form instead of a single empty
+# section. Auto duration remains a ceiling; the model still chooses its ending.
+INSTRUMENTAL_LYRICS = """[Intro]
+[Instrumental]
+[Verse]
+[Instrumental]
+[Chorus]
+[Instrumental]
+[Bridge]
+[Instrumental]
+[Outro]
+[Instrumental]"""
+
 
 class TauriWebViewCORSMiddleware(BaseHTTPMiddleware):
     """Let the Tauri WebView2 UI call this sidecar.
@@ -449,7 +462,7 @@ def prepare_generation_params(params: dict) -> dict:
     safe_lyrics = music3_safe_text(prepared["lyrics"])
     prepared["voice_slots"] = voice_profiles.normalize_slots(prepared.get("voice_slots"))
     if prepared["instrumental"]:
-        prepared["rendered_lyrics"] = "[Instrumental]"
+        prepared["rendered_lyrics"] = INSTRUMENTAL_LYRICS
         prepared["generation_description"] = voice_profiles.apply_instrumental_caption(safe_description)
         prepared["generation_tags"] = heartmula_tags(prepared["generation_description"] + ", instrumental")
         prepared["voice_slots"] = voice_profiles.normalize_slots({})
